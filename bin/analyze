@@ -1,0 +1,30 @@
+echo 
+echo We first uncompress the cwb files if they are compressed:
+echo '(there are' `ls -l cwb.*.Z | wc -l ` of 'them).'
+uncompress cwb.*.Z
+echo
+echo Then we thread the worms in time:
+threadworms cwb.*
+echo
+echo Then we untangle the braid:
+untangle
+echo
+echo Now we remove any compressed braid, thread or swb that might be there.
+rm braid.Z thread.Z swb.?????.Z
+echo
+echo Then we extract all worms with a timeline longer than 10 timesteps
+makewormlist 10 | sort -r | csh
+echo 
+echo Now we remove any compressed ascii or track files.
+rm asc.*.Z trk.*.Z
+echo Now we get tracks and ascii files:
+asciibatchns swb.*
+echo 
+#echo Then we compress the cwb files and stuff.
+#compress braid cwb.* thread 
+
+
+
+
+
+
